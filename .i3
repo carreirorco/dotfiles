@@ -1,1 +1,0 @@
-/home/rafael/.i3
