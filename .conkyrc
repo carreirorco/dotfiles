@@ -24,7 +24,7 @@ draw_graph_borders no
 draw_outline no
 draw_shades no
 gap_x 5
-gap_y 160
+gap_y 0
 max_specials 1024
 max_user_text 10000
 maximum_width 180
@@ -49,9 +49,9 @@ use_xft yes
 xftalpha 0.75
 xftfont sans:size=7
 
-lua_load /home/didisoft/.conky/lua.lua
+#lua_load /home/didisoft/.conky/lua.lua
 
-# ${diskiograph /dev/sda 15,180 a7a7a7 a7a7a7} # wskaznik pracy dysku
+#${diskiograph /dev/sda 15,180 a7a7a7 a7a7a7} # wskaznik pracy dysku
 # ${image /home/didisoft/.conky/didisoft.jpg -p 0,80 -s 26x28} # obrazki w conky
 
 
@@ -61,11 +61,10 @@ ${color2}${goto 85}${voffset 10}${font :size=8}${time %A}
 ${color2}${goto 85}${voffset 1}${font :size=8}${time %d %B %Y}
 ${color}${font RsbillsDng:size=14}${font}${font DejaVu Sans Mono:size=8}${execpi 3600 DJS=`date +%_d`; cal -m | sed '1d' | sed '/./!d' | sed 's/$/                     /' | fold -w 21 | sed -n '/^.\{21\}/p' | sed 's/^/${alignc} /' | sed /" $DJS "/s/" $DJS "/" "'${color2}'"$DJS"'${color}'" "/}${font}
 
-
 ${voffset -20}${color2}${font led:size=10}SYSTEM ${font}$hr
 ${color}${sysname} Kernel: ${alignr}$kernel
 ${color}Conky:${alignr}${conky_version}
-${color}Bateria: ${alignr}${battery_percent BAT1}% / ${acpitemp}°C
+${color}Bateria: ${alignr}${battery_percent BAT0}% / ${acpitemp}°C
 #${color}Bateria czas pracy: ${alignr}$battery_time
 #${color}Gmail: ${alignr}${execi 60 ~/.conky/gmail.sh}
 
@@ -83,10 +82,10 @@ ${color}${font :size=6}${goto 9}${top name 2}${goto 85}${top pid 2}${goto 120}${
 ${color}${font :size=6}${goto 9}${top name 3}${goto 85}${top pid 3}${goto 120}${top cpu 3}${goto 156}${top mem 3}
 ${color}${font :size=6}${goto 9}${top name 4}${goto 85}${top pid 4}${goto 120}${top cpu 4}${goto 156}${top mem 4}
 ${color}${font :size=6}${goto 9}${top name 5}${goto 85}${top pid 5}${goto 120}${top cpu 5}${goto 156}${top mem 5}
-${color}${font :size=6}${goto 9}${top name 6}${goto 85}${top pid 6}${goto 120}${top cpu 6}${goto 156}${top mem 6}
-${color}${font :size=6}${goto 9}${top name 7}${goto 85}${top pid 7}${goto 120}${top cpu 7}${goto 156}${top mem 7}
-${color}${font :size=6}${goto 9}${top name 8}${goto 85}${top pid 8}${goto 120}${top cpu 8}${goto 156}${top mem 8}
-${color}${font :size=6}${goto 9}${top name 9}${goto 85}${top pid 9}${goto 120}${top cpu 9}${goto 156}${top mem 9}
+#${color}${font :size=6}${goto 9}${top name 6}${goto 85}${top pid 6}${goto 120}${top cpu 6}${goto 156}${top mem 6}
+#${color}${font :size=6}${goto 9}${top name 7}${goto 85}${top pid 7}${goto 120}${top cpu 7}${goto 156}${top mem 7}
+#${color}${font :size=6}${goto 9}${top name 8}${goto 85}${top pid 8}${goto 120}${top cpu 8}${goto 156}${top mem 8}
+#${color}${font :size=6}${goto 9}${top name 9}${goto 85}${top pid 9}${goto 120}${top cpu 9}${goto 156}${top mem 9}
 
 
 ${voffset -6}${color2}${font led:size=10}MEMORY / HDD / USB ${font}$hr
@@ -94,28 +93,28 @@ ${color}ram: ${mem} / ${memmax} ${alignr} ${memperc}%
 ${color}swap: ${swap} / ${swapmax} ${alignr} ${swapperc}%
 ${color}root: ${fs_used /} / ${fs_size /} ${alignr} ${fs_used_perc /}%
 ${color}home: ${fs_used /home} / ${fs_size /home} ${alignr} ${fs_used_perc /home}%
-${color}${voffset -12}${execpi 5 ~/.conky/usb_nowe.sh}
+#${color}${voffset -12}${execpi 5 ~/.conky/usb_nowe.sh}
 
 
 ${voffset -10}${color2}${font led:size=10}WIFI ${font}$hr
 ${color}gateway IP: ${alignr}${gw_ip}
-${color}local IP: $alignr${addr wlan0}
-${color}public IP: $alignr${execi 60 ~/.conky/ip.sh}
+${color}local IP: $alignr${addr wlp3s0}
+${color}public IP: $alignr${execi 10800 ~/.conky/ip.sh}
 
-${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}S${font}${color}${voffset -12}${goto 40}Down: ${downspeed wlan0}kb/s ${color}
-${goto 40}Day: ${totaldown wlan0}${voffset -12}${alignr}${downspeedgraph wlan0 25,50 64574e 64574e}
+${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}S${font}${color}${voffset -12}${goto 40}Down: ${downspeed wlp3s0}kb/s ${color}
+${goto 40}Day: ${totaldown wlp3s0}${voffset -12}${alignr}${downspeedgraph wlp3s0 25,50 64574e 64574e}
 ${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $3 $4}'}
 
 
-${color}${goto 10}${font pizzadude bullets:size=16}M${font}$color${voffset -12}${goto 40}Up: ${upspeed wlan0}kb/s${color}
-${goto 40}Day: ${totalup wlan0}${voffset -12}${alignr}${upspeedgraph wlan0 25,50 64574e 64574e}
+${color}${goto 10}${font pizzadude bullets:size=16}M${font}$color${voffset -12}${goto 40}Up: ${upspeed wlp3s0}kb/s${color}
+${goto 40}Day: ${totalup wlp3s0}${voffset -12}${alignr}${upspeedgraph wlp3s0 25,50 64574e 64574e}
 ${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $6 $7}'}
 
-${color}${font}${alignc}Conectado :$alignr${wireless_essid wlan0}
+${color}${font}Conectado :$alignr${wireless_essid wlp3s0}
 ${color}${font}${alignc}${execi 60 ~/.conky/uzytkownicysieci.sh}
 
-${color2}${if_mpd_playing}${font led:size=10}MPD ${font}${mpd_status} $hr
-${color}${alignc}${mpd_artist} - "${mpd_title}"
-${color}${alignc}${mpd_album}
-${color}${alignc}${mpd_bar 3,150}
-${color}${alignc}${mpd_elapsed}/${mpd_length}${endif}
+#${color2}${if_mpd_playing}${font led:size=10}MPD ${font}${mpd_status} $hr
+#${color}${alignc}${mpd_artist} - "${mpd_title}"
+#${color}${alignc}${mpd_album}
+#${color}${alignc}${mpd_bar 3,150}
+#${color}${alignc}${mpd_elapsed}/${mpd_length}${endif}
