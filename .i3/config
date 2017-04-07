@@ -111,6 +111,7 @@ set $workspace1  "1: Firefox "
 set $workspace2  "2: Terminal "
 set $workspace3  "3: Code "
 set $workspace4  "4: Thunar "
+set $workspace5  "5: Franz"
 set $workspace9  "9: Simplescreenrecorder "
 set $workspace10 "10: Music "
 
@@ -119,7 +120,7 @@ bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace 5
+bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -131,7 +132,7 @@ bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
@@ -142,6 +143,7 @@ assign [class="Firefox"] $workspace1
 assign [class="Terminator"] $workspace2
 assign [class="Atom"] $workspace3
 assign [class="Thunar"] $workspace4
+assign [class="Fraz"] $workspace5
 assign [class="Simplescreenrecorder"] $workspace9
 assign [class="Spotify"] $workspace10
 
@@ -204,13 +206,16 @@ bar {
 #######################################################################
 exec i3-config-wizard
 
+# Inicializacao automatica
+exec --no-startup-id "conky -c ~/.conkyrc"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "pulseaudio --start"
 exec --no-startup-id "parcellite &"
 exec --no-startup-id "volumeicon &"
-exec "terminator"
-exec "firefox"
+#exec "terminator"
+#exec "firefox"
 
+# Combinacao de teclas de atalhos personalizadas
 bindsym $mod+shift+i exec "i3lock -c 000000"
 bindsym $mod+shift+p exec "xfce4-screenshooter"
 bindsym $mod+shift+v exec "simplescreenrecorder --start-hidden"
