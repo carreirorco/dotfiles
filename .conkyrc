@@ -5,8 +5,8 @@ background yes
 border_margin 5
 border_width 5
 color0 555555			#
-color1 FCAF3E			# zolty
-color2 64574e			# braz
+color1 FF0000			# zolty
+color2 006D00			# braz | relogio
 color3 a82553			# rozowy f71f84
 color4 5e1014			# bordowy
 color5 64574e			# braz
@@ -15,7 +15,7 @@ color7 8888CC			#  (COOL)
 color8 9d9c61			# zolto-szary
 color9 525276			# niebiesko-szary
 cpu_avg_samples 2
-default_color e1e1e1		# szary a7a7a7
+		default_color 000000		# szary a7a7a7
 default_outline_color 000000 	# Black
 default_shade_color 000000	# Black
 double_buffer yes
@@ -24,7 +24,7 @@ draw_graph_borders no
 draw_outline no
 draw_shades no
 gap_x 5
-gap_y 0
+gap_y 40
 max_specials 1024
 max_user_text 10000
 maximum_width 180
@@ -47,7 +47,7 @@ uppercase no
 use_spacer right
 use_xft yes
 xftalpha 0.75
-xftfont sans:size=7
+xftfont sans:size=8
 
 #lua_load /home/didisoft/.conky/lua.lua
 
@@ -57,8 +57,8 @@ xftfont sans:size=7
 
 TEXT
 ${color2}${goto 10}${font DejaVu Sans Mono:size=44}${time %H}${font DejaVu Sans Mono:size=20}${voffset -25}'${time %M}${font DejaVu Sans Mono:size=8}${voffset -12}${time %S}
-${color2}${goto 85}${voffset 10}${font :size=8}${time %A}
-${color2}${goto 85}${voffset 1}${font :size=8}${time %d %B %Y}
+${color}${goto 85}${voffset 10}${font :size=8}${time %A}
+${color}${goto 85}${voffset 1}${font :size=8}${time %d %B %Y}
 ${color}${font RsbillsDng:size=14}${font}${font DejaVu Sans Mono:size=8}${execpi 3600 DJS=`date +%_d`; cal -m | sed '1d' | sed '/./!d' | sed 's/$/                     /' | fold -w 21 | sed -n '/^.\{21\}/p' | sed 's/^/${alignc} /' | sed /" $DJS "/s/" $DJS "/" "'${color2}'"$DJS"'${color}'" "/}${font}
 
 ${voffset -20}${color2}${font led:size=10}SYSTEM ${font}$hr
@@ -98,19 +98,26 @@ ${color}home: ${fs_used /home} / ${fs_size /home} ${alignr} ${fs_used_perc /home
 
 ${voffset -10}${color2}${font led:size=10}WIFI ${font}$hr
 ${color}gateway IP: ${alignr}${gw_ip}
-${color}local IP: $alignr${addr wlp3s0}
-${color}public IP: $alignr${execi 10800 ~/.conky/ip.sh}
+#${color}local IP: $alignr${addr wlp3s0}
+${color}local IP: $alignr${addr enp0s25}
+#${color}public IP: $alignr${execi 10800 ~/.conky/ip.sh}
 
-${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}S${font}${color}${voffset -12}${goto 40}Down: ${downspeed wlp3s0}kb/s ${color}
-${goto 40}Day: ${totaldown wlp3s0}${voffset -12}${alignr}${downspeedgraph wlp3s0 25,50 64574e 64574e}
+#${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}S${font}${color}${voffset -12}${goto 40}Down: ${downspeed wlp3s0}kb/s ${color}
+${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}S${font}${color}${voffset -12}${goto 40}Down: ${downspeed enp0s25}kb/s ${color}
+#${goto 40}Day: ${totaldown wlp3s0}${voffset -12}${alignr}${downspeedgraph wlp3s0 25,50 000000 02F917}
+${goto 40}Day: ${totaldown enp0s25}${voffset -12}${alignr}${downspeedgraph enp0s25 25,50 000000 02F917}
 ${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $3 $4}'}
 
 
-${color}${goto 10}${font pizzadude bullets:size=16}M${font}$color${voffset -12}${goto 40}Up: ${upspeed wlp3s0}kb/s${color}
-${goto 40}Day: ${totalup wlp3s0}${voffset -12}${alignr}${upspeedgraph wlp3s0 25,50 64574e 64574e}
+#${color}${goto 10}${font pizzadude bullets:size=16}M${font}$color${voffset -12}${goto 40}Up: ${upspeed wlp3s0}kb/s${color}
+${color}${goto 10}${font pizzadude bullets:size=16}M${font}$color${voffset -12}${goto 40}Up: ${upspeed enp0s25}kb/s${color}
+#${goto 40}Day: ${totalup wlp3s0}${voffset -12}${alignr}${upspeedgraph wlp3s0 25,50 000000 02F917}
+${goto 40}Day: ${totalup enp0s25}${voffset -12}${alignr}${upspeedgraph enp0s25 25,50 000000 02F917}
+
 ${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $6 $7}'}
 
-${color}${font}Conectado :$alignr${wireless_essid wlp3s0}
+#${color}${font}Conectado :$alignr${color2}${wireless_essid wlp3s0}
+${color}${font}Conectado :$alignr${color2}${wireless_essid enp0s25}
 ${color}${font}${alignc}${execi 60 ~/.conky/uzytkownicysieci.sh}
 
 #${color2}${if_mpd_playing}${font led:size=10}MPD ${font}${mpd_status} $hr
