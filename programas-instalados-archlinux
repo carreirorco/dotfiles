@@ -1,3 +1,7 @@
 vim curl wget dialog git python 
-xorg-server xorg-xinput htop i3-wm rofi terminus-font ttf-dejavu terminator firefox parcellite arandr simplescreenrecorder gvfs tumbler thunar-volman thunar-archive-plugin thunar-media-tags-plugin gtk-engines gtk-engine-aurora chromium pepper-flash jre8-openjdk alsa-lib alsa-utils alsa-firmware alsa-plugins pulseaudio-alsa pulseaudio vlc cmus tar gzip bzip2 unzip unrar p7zip epdfview ranger dosfstools bash-completion virtualbox virtualbox-guest-iso virtualbox-guest-utils vagrant docker docker-compose rsync remmina openssh
+xorg-server xorg-xinput htop i3-wm rofi terminus-font ttf-dejavu terminator firefox parcellite arandr simplescreenrecorder gvfs tumbler thunar-volman thunar-archive-plugin thunar-media-tags-plugin gtk-engines gtk-engine-aurora chromium pepper-flash jre8-openjdk 
+alsa-lib alsa-utils alsa-firmware alsa-plugins pulseaudio-alsa pulseaudio pavucontrol vlc
+tar gzip bzip2 unzip unrar p7zip epdfview ranger dosfstools bash-completion virtualbox virtualbox-guest-iso virtualbox-guest-utils vagrant docker docker-compose rsync remmina openssh
 nmap aircrack-ng wireshark-gtk metasploit hydra tcpdump
+fprintd pam libusb imagemagick
+lynx
