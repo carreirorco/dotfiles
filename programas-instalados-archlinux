@@ -5,3 +5,4 @@ tar gzip bzip2 unzip unrar p7zip epdfview ranger dosfstools bash-completion virt
 nmap aircrack-ng wireshark-gtk metasploit hydra tcpdump
 fprintd pam libusb imagemagick
 lynx
+gvfs gvfs-mtp gvfs-nfs gvfs-smb gvfs-google
