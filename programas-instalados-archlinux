@@ -6,3 +6,4 @@ nmap aircrack-ng wireshark-gtk metasploit hydra tcpdump
 fprintd pam libusb imagemagick
 lynx
 gvfs gvfs-mtp gvfs-nfs gvfs-smb gvfs-google
+gparted dosfstools jfsutils f2fs-tools btrfs-progs exfat-utils ntfs-3g reiserfsprogs udftools xfsprogs nilfs-utils polkitgpart mtools
