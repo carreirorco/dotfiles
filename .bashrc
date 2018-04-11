@@ -47,9 +47,11 @@ alias ssh-ecva01='ssh root@ecva01 -p2297'
 alias ssh-ecsp='ssh root@ecsp -p2297'
 alias ssh-upgrade='ssh root@upgrade -p2297'
 alias ssh-files='ssh root@arcafiles -p2297'
+alias ssh-elasticv112='ssh root@elasticv112 -p2297'
 alias arca-ssh='ssh -p 2297 -l root '
 
 
+alias digital_ocean_list_only_edirectory='doctl compute droplet list --format Name,PublicIPv4,Tags --no-header | grep -E "[^,]edirectory$"'
 #
 # Pacman Alias
 #
@@ -112,3 +114,7 @@ translate(){
 }
 
 synclient TapButton1=1 TapButton2=2 TapButton3=3
+
+export BASHSRC_PATH=$HOME/bashsrc
+export PATH=$PATH:$BASHSRC_PATH/src
+export PATH=$PATH:$BASHSRC_PATH/bin
