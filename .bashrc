@@ -115,6 +115,8 @@ translate(){
 
 function get_dns_mx(){ echo "${1:?syntax: get_dns_mx domain}" ; lynx --dump intodns.com/$1 | grep -A 10 'MX Records' | sed 's/^[ ]*//g' | grep -E '^[0-9]' ;}
 
+function get_organization(){ echo "${1:?syntax: get_organization ip}" ; lynx --dump shodan.io/host/$1 | grep 'Organization' | awk -F' ' '{print $2}' | head -1 ; }
+
 # synclient TapButton1=1 TapButton2=2 TapButton3=3
 
 export BASHSRC_PATH=$HOME/bashsrc
