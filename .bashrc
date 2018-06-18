@@ -113,7 +113,9 @@ translate(){
 	gawk -f <(curl -Ls git.io/translate) -- -shell
 }
 
-synclient TapButton1=1 TapButton2=2 TapButton3=3
+function get_dns_mx(){ echo "${1:?syntax: get_dns_mx domain}" ; lynx --dump intodns.com/$1 | grep -A 10 'MX Records' | sed 's/^[ ]*//g' | grep -E '^[0-9]' ;}
+
+# synclient TapButton1=1 TapButton2=2 TapButton3=3
 
 export BASHSRC_PATH=$HOME/bashsrc
 export PATH=$PATH:$BASHSRC_PATH/src
