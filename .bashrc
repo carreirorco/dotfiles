@@ -117,6 +117,8 @@ function get_dns_mx(){ echo "${1:?syntax: get_dns_mx domain}" ; lynx --dump into
 
 function get_organization(){ echo "${1:?syntax: get_organization ip}" ; lynx --dump shodan.io/host/$1 | grep 'Organization' | awk -F' ' '{print $2}' | head -1 ; }
 
+function get_status_registrobr() { echo ${1:-syntax get_status_registrobr domain} ; curl -s --data "qr=$1&captchaBtn=1"  https://registro.br/2/whois | grep -A 31 '"whois-output-plain"' | sed 's/.*<pre>//g' | sed /whois-output-plain/d ; }
+
 # synclient TapButton1=1 TapButton2=2 TapButton3=3
 
 export BASHSRC_PATH=$HOME/bashsrc
