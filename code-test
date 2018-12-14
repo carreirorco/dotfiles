@@ -1,5 +1,5 @@
         $connection = new PDO("mysql:host="._DIRECTORYDB_HOST.";dbname="._DIRECTORYDB_NAME.";charset=utf8", _DIRECTORYDB_USER, _DIRECTORYDB_PASS);
-	$connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+	 $connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $statement = $connection->prepare('SELECT * FROM Forgot_Password WHERE unique_key = :key');
