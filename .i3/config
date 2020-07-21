@@ -90,6 +90,7 @@ set $workspace2  "2: Terminal "
 set $workspace3  "3: Code "
 set $workspace4  "4: Thunar "
 set $workspace5  "5: Franz"
+set $workspace6  "6: Spotify"
 set $workspace9  "9: ScreenCast "
 set $workspace10 "10: Music "
 
@@ -179,7 +180,8 @@ bar {
 exec --no-startup-id "conky -c ~/.config/conkyrc"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "parcellite &"
-exec --no-startup-id "flamesot &"
+exec --no-startup-id "flameshot &"
+exec --no-startup-id "dunst"
 
 # Combinacao de teclas de atalhos personalizadas
 bindsym $mod+shift+i exec "i3lock -c 000000"
@@ -213,3 +215,4 @@ client.urgent #ff0000 #ff0000 #ff0000 #ff0000
 
 # compton
 exec /usr/bin/compton --config ~/.config/compton/compton.conf
+
