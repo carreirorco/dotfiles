@@ -15,7 +15,7 @@ color7 8888CC			#  (COOL)
 color8 9d9c61			# zolto-szary
 color9 525276			# niebiesko-szary
 cpu_avg_samples 2
-		default_color 000000		# szary a7a7a7
+default_color 000000		# szary a7a7a7
 default_outline_color 000000 	# Black
 default_shade_color 000000	# Black
 double_buffer yes
@@ -118,7 +118,7 @@ ${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | ta
 
 #${color}${font}Conectado :$alignr${color2}${wireless_essid wlp3s0}
 ${color}${font}Conectado :$alignr${color2}${wireless_essid enp0s25}
-${color}${font}${alignc}${execi 60 ~/.conky/uzytkownicysieci.sh}
+#${color}${font}${alignc}${execi 60 ~/.conky/uzytkownicysieci.sh}
 
 #${color2}${if_mpd_playing}${font led:size=10}MPD ${font}${mpd_status} $hr
 #${color}${alignc}${mpd_artist} - "${mpd_title}"
